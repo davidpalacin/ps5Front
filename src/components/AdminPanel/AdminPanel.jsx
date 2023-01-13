@@ -26,7 +26,7 @@ export default function AdminPanel() {
 
   const handleLogout = () => {
     TokenStorageService.logOut();
-    navigate("/characters");
+    navigate("/movies");
   };
 
   return (

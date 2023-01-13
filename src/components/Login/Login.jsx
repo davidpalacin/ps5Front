@@ -32,7 +32,7 @@ export default function Login() {
       if (res.user.role == "admin") {
         navigate("/administratorPanel");
       } else if (res.user.role == "user") {
-        navigate("/characters");
+        navigate("/movies");
       }
     } catch (e) {
       setMessage(

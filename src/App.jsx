@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,8 +10,7 @@ import {
   createRoutesFromElements,
   Navigate
 } from "react-router-dom";
-import { CharactersList } from './containers/CharactersList/CharactersList';
-import { CharacterDetail } from './containers/CharacterDetail/CharacterDetail';
+import { MovieList } from './components/MovieList/MovieList';
 import {Header} from './components/Header/Header';
 import Login from './components/Login/Login';
 import {About} from './containers/About/About';
@@ -27,9 +25,8 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Navigate to="/characters" />} />
-          <Route path="/characters" element={<CharactersList />} />
-          <Route path="/characters/:id" element={<CharacterDetail />} />
+          <Route path="/" element={<Navigate to="/movies" />} />
+          <Route path="/movies" element={<MovieList />} />
           <Route path="/about" element={<About />} />
           <Route path='/login' element={<Login />} />
           <Route path='/administratorPanel' element={<AdminPanel />} />
