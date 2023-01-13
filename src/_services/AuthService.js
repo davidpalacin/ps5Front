@@ -1,9 +1,10 @@
 import axios from "axios";
 const AuthService = {};
+import { enviroment } from "../_enviroments/enviroment";
 
 AuthService.login = async (user) => {
   try {
-    const req = "http://localhost:3000/auth/login";
+    const req = `${enviroment.BASE_URL}/auth/login`;
     const res = await axios.post(req, {
       email: user.email,
       password: user.password,
@@ -17,7 +18,7 @@ AuthService.login = async (user) => {
 
 AuthService.register = async (user) => {
   try {
-    const req = "http://localhost:3000/auth/register";
+    const req = `${enviroment.BASE_URL}/auth/register`;
     const res = await axios.post(req, {
       name: user.name,
       email: user.email,

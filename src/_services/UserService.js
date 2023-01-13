@@ -1,10 +1,11 @@
 import axios from "axios";
+import {enviroment} from '../_enviroments/enviroment.js';
 
 const UserService = {};
 
 UserService.getAllUsers = async (token) => {
 
-  const apiUrl = 'http://localhost:3000/users';
+  const apiUrl = `${enviroment.BASE_URL}/users`;
 
   const config = {
     headers: { Authorization: `Bearer ${token}` },
