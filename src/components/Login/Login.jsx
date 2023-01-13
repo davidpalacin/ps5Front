@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
+import { setLoggedIn, setLoggedOut } from "../../features/login/loginSlice";
 import TokenStorageService from '../../_services/TokenStorageService.js';
-import { validateForm } from "../../_helpers/form_utilities";
 import "./Login.scss";
 
 export default function Login() {
+  const logged = useSelector((state) => state.logged.value);
+  console.log(`Loggeado es ${logged}`);
+
+
+  const dispatch = useDispatch();
+
   const [message, setMessage] = useState("");
   const [formValues, setFormValues] = useState({
     email: "",
@@ -19,6 +26,9 @@ export default function Login() {
     try {
       const res = await AuthService.login(credentials);
       TokenStorageService.saveToken(res.token);
+
+      dispatch(setLoggedIn());
+
       if (res.user.role == "admin") {
         navigate("/administratorPanel");
       } else if (res.user.role == "user") {
