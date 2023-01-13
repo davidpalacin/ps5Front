@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  background-color: #70bb98;
+}
+
+body {
+  background-image: url("../src/assets/pickle_rick.webp");
+  background-repeat: repeat;
+  background-size: 60px;
+}

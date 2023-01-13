@@ -1,0 +1,25 @@
+$font-color: #27051f;
+
+.register-form {
+  max-width: 500px;
+  margin: 20px auto;
+  gap: 13px;
+}
+
+.btnRegister {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 5px;
+  color: $font-color;
+  font-weight: bold;
+  border: 3px solid $font-color;
+  background-color: transparent;
+}
+.niceRegister{
+  color: green;
+  font-weight: bold;
+}
+.badRegister{
+  color: red;
+  font-weight: bold;
+}

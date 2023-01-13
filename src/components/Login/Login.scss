@@ -1,0 +1,41 @@
+$font-color: #27051f;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin-top: 20px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.formTitle{
+  color: $font-color;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
+}
+.message {
+  color: red;
+  font-weight: bold;
+}
+.btn-login{
+  width: 100%;
+  border-radius: 5px;
+  color: $font-color;
+  font-weight: bold;
+  border: 3px solid $font-color;
+  background-color: transparent;
+}
+
+input {
+  border: 3px solid $font-color;
+  border-radius: 5px;
+  width: 100%;
+}
+label {
+  font-weight: bold;
+  color: $font-color;
+}

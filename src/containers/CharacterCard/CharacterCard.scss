@@ -1,0 +1,12 @@
+.CharacterCard {
+    cursor: pointer;
+    align-items: center;
+    width: 187px;
+    background-color: #d9eaee !important;
+}
+.CharacterCard:hover{
+    transform: scale(1.03);
+}
+.char-name{
+    color: #025959;
+}

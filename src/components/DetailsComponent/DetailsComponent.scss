@@ -1,0 +1,14 @@
+.DetailsComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.details-component-info, .details-component-info-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.details-component-info-block{
+    margin-bottom: 15px;
+}

@@ -1,0 +1,15 @@
+$white: #ffffff;
+
+$theme-colors: (
+    "light": #c2dce2,
+    "dark": #F25041,
+    "primary": orangered,
+    "secondary": #cacaca,
+    "info": #9c676b,
+    "success": #109b58,
+    "warning": #e0c812,
+    "danger": #ee1407,
+    "nav": #025959
+);
+
+@import "bootstrap/scss/bootstrap.scss";
