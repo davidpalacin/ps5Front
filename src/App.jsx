@@ -19,8 +19,6 @@ import {About} from './containers/About/About';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Register from './components/Register/Register';
 
-
-
 function App() {
 
   return (
