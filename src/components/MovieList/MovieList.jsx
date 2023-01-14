@@ -1,5 +1,6 @@
 import React from "react"; //Podemos dejar este import pero hoy día no es necesario
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./MovieList.scss";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { MovieService } from "../../_services/MovieService";
@@ -7,12 +8,14 @@ import MovieCard from "../MovieCard/MovieCard";
 
 
 export function MovieList() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
+
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
 
   const token = TokenStorageService.getToken();
-  console.log(token);
 
   useEffect(() => {
     getAllMovies();

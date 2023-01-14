@@ -2,33 +2,32 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
-import { setLoggedIn, setLoggedOut } from "../../features/login/loginSlice";
+import { login } from "../../features/login/authSlice";
 import TokenStorageService from '../../_services/TokenStorageService.js';
 import "./Login.scss";
 
 export default function Login() {
-  const logged = useSelector((state) => state.logged.value);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logged = useSelector((state) => state.auth.isLoggedIn);
+
   console.log(`Loggeado es ${logged}`);
 
-
-  const dispatch = useDispatch();
-
   const [message, setMessage] = useState("");
+
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
-  const [isSubmit, setIsSubmit] = useState(false);
 
-  const navigate = useNavigate();
-
-  const login = async (credentials) => {
+  const handleLogin = async (credentials) => {
     try {
       const res = await AuthService.login(credentials);
       TokenStorageService.saveToken(res.token);
 
-      dispatch(setLoggedIn());
-
+      dispatch(login(res.user));
+      
       if (res.user.role == "admin") {
         navigate("/administratorPanel");
       } else if (res.user.role == "user") {
@@ -36,7 +35,7 @@ export default function Login() {
       }
     } catch (e) {
       setMessage(
-        "Credenciales incorrectas, inténtalo de nuevo o recupera tu contraseña."
+        "Ha habido un error inesperado, inténtelo de nuevo más tarde."
       );
     }
   };
@@ -68,7 +67,9 @@ export default function Login() {
         onChange={handleChange}
       />
 
-      <button className="btn-login" onClick={() => login(formValues)}>Submit</button>
+      <button className="btn-login" onClick={() => handleLogin(formValues)}>
+        Submit
+      </button>
       <span className="message">{message}</span>
     </div>
   );

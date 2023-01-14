@@ -1,14 +1,63 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from '../../assets/react.svg';
+import { logout } from '../../features/login/authSlice.js';
 import TokenStorageService from "../../_services/TokenStorageService";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import './Navbar.scss';
 
 export default function Navbar() {
 
-const logout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setHeaderText(`${user.name}`);
+    } else {
+      setHeaderText('');
+    }
+  }, [isLoggedIn, user]);
+
+const handleLogout = () => {
   TokenStorageService.logOut();
-  const token = TokenStorageService.getToken();
+  dispatch(logout());
+  navigate('/login');
+};
+
+const handleShowNavbar = () => {
+  if (isLoggedIn) {
+    return (
+      <>
+        <li className="nav-item">
+          <span onClick={handleLogout} className="nav-link navbar-logout">
+            Logout
+          </span>
+        </li>
+        <li  className="nav-item">
+          <span className="nav-link">{user.name}</span>
+        </li>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <li className="nav-item">
+          <NavLink to="/login" className="nav-link">
+            Login
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/register" className="nav-link">
+            Register
+          </NavLink>
+        </li>
+      </>
+    );
+  }
 }
 
   return (
@@ -35,26 +84,7 @@ const logout = () => {
                 Movies
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/about" className="nav-link">
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/login" className="nav-link">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/register" className="nav-link">
-                Register
-              </NavLink>
-            </li>
-            <li>
-              <span onClick={logout} className="nav-link navbar-logout">
-                Logout
-              </span>
-            </li>
+            {handleShowNavbar()}
           </ul>
         </div>
       </div>

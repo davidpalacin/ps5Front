@@ -9,7 +9,6 @@ AuthService.login = async (user) => {
       email: user.email,
       password: user.password,
     });
-    console.log(res.data.user);
     return res.data;
   } catch (error) {
     console.log(error);
