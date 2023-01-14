@@ -14,13 +14,6 @@ export default function Navbar() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      setHeaderText(`${user.name}`);
-    } else {
-      setHeaderText('');
-    }
-  }, [isLoggedIn, user]);
 
 const handleLogout = () => {
   TokenStorageService.logOut();

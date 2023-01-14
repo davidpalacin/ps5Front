@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import TokenStorageService from '../../_services/TokenStorageService';
 import UserService from '../../_services/UserService';
 import './AdminPanel.scss';
 
 export default function AdminPanel() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
+
   const navigate = useNavigate();
   const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     getAllUsers(token);
-  }, []);
+  }, [isLoggedIn, user]);
 
   const getAllUsers = async () => {
     try {
       const res = await UserService.getAllUsers(token);
-      console.log(res)
       setUsers(res.data);
       console.log(users)
     } catch (error) {
       console.log(error.message || error);
     }
-  };
-
-  const handleLogout = () => {
-    TokenStorageService.logOut();
-    navigate("/movies");
   };
 
   return (
@@ -38,8 +36,6 @@ export default function AdminPanel() {
           <div key={user._id}>{user.name}</div>
         ))}
       </div>
-
-      <button onClick={handleLogout}> Logout </button>
     </div>
   );
 }
