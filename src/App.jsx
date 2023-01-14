@@ -16,6 +16,7 @@ import Login from './components/Login/Login';
 import {About} from './containers/About/About';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Register from './components/Register/Register';
+import UserProfile from './components/UserProfile/UserProfile';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/administratorPanel' element={<AdminPanel />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/userProfile' element={<UserProfile />} />
         </Routes>
 
       </BrowserRouter>

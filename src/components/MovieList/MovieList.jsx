@@ -10,12 +10,10 @@ import MovieCard from "../MovieCard/MovieCard";
 export function MovieList() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
+  const token = TokenStorageService.getToken();
 
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pages, setPages] = useState(1);
 
-  const token = TokenStorageService.getToken();
 
   useEffect(() => {
     getAllMovies();

@@ -8,8 +8,8 @@ import './AdminPanel.scss';
 export default function AdminPanel() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
-
   const navigate = useNavigate();
+
   const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
 

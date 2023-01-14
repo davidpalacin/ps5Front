@@ -21,6 +21,10 @@ const handleLogout = () => {
   navigate('/login');
 };
 
+const handleEnterProfile = () => {
+  navigate("/userProfile");
+}
+
 const handleShowNavbar = () => {
   if (isLoggedIn) {
     return (
@@ -30,8 +34,13 @@ const handleShowNavbar = () => {
             Logout
           </span>
         </li>
-        <li  className="nav-item">
-          <span className="nav-link">{user.name}</span>
+        <li className="nav-item">
+          <span
+            onClick={handleEnterProfile}
+            className="nav-link navbar-username"
+          >
+            {user.name}
+          </span>
         </li>
       </>
     );
