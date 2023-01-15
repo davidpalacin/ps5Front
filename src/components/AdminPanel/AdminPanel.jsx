@@ -31,6 +31,7 @@ export default function AdminPanel() {
     const res = await UserService.deleteUser(userToDelete);
     console.log(res);
     await getAllUsers(token);
+    console.log(users);
   }
 
   return (
