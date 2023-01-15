@@ -63,6 +63,15 @@
   border: 3px solid black;
 }
 
+.movie-info-description-buttons button:hover{
+  background-color: black;
+  color: white;
+}
+
 .movie-info-description {
   margin: auto 0;
+}
+
+.modal-image{
+  border-radius: 5px;
 }
