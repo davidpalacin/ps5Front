@@ -32,9 +32,19 @@
   border: 3px solid black;
 }
 
-.manageButtons button:hover {
-  background-color: black;
+.checkAsPending:hover{
   color: white;
+  background-color: rgb(196, 196, 0);
+}
+
+.checkViewed:hover{
+  color: white;
+  background-color: green;
+}
+
+.deleteFromWatchlist:hover{
+  color: white;
+  background-color: red;
 }
 
 .close-modal{
@@ -54,4 +64,12 @@
 
 .close-modal:hover{
   transform: scale(1.03);
+}
+
+.movieViewed{
+  color: rgb(50, 255, 50);
+}
+
+.moviePending{
+  color: rgb(255, 255, 105) !important;
 }

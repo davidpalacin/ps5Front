@@ -41,6 +41,8 @@ export default function MovieCard({ movie }) {
       try {
         const res = await UserService.rentMovie(userLogged, movie);
         console.log(res);
+
+        setIsModalOpen(false);
       } catch (error) {
         console.log(error);
       }

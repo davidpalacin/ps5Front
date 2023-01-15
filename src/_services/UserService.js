@@ -33,4 +33,29 @@ UserService.rentMovie = async (user, movie) => {
   }
 }
 
+UserService.check = async (user, movieId, newStatus) => {
+  try {
+    const body = {
+      "viewed": newStatus
+    }
+    const apiURL = `${enviroment.BASE_URL}/users/${user._id}/check/${movieId}`;
+    const res = await axios.patch(apiURL, body);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+UserService.deleteMovie = async (user, movieId) => {
+  try {
+    const apiURL = `${enviroment.BASE_URL}/users/${user._id}/deleteMovie/${movieId}`;
+    const res = await axios.delete(apiURL);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default UserService;

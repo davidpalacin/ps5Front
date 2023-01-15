@@ -37,20 +37,18 @@ export default function UserProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [movieToView, setMovieToView] = useState(undefined);
 
-  if(isLoggedIn) {
-      try {
-        UserService.getMoviesFromUser(user.name).then((res)=>{
-          dispatch(updateMovies([
-            ...res.data.movies,
-          ]));
-        })
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      alert("Necesitas iniciar sesión para usar esto.");
-      navigate("/login");
+  if (isLoggedIn) {
+    try {
+      UserService.getMoviesFromUser(user.name).then((res) => {
+        dispatch(updateMovies([...res.data.movies]));
+      });
+    } catch (error) {
+      console.log(error);
     }
+  } else {
+    alert("Necesitas iniciar sesión para usar esto.");
+    navigate("/login");
+  }
 
   const handleViewRented = (movie) => {
     console.log(`ver detalles de ${movie.title}`);
@@ -61,6 +59,21 @@ export default function UserProfile() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  const handleCheckViewed = async (movieId, newStatus) => {
+    // Usar el servicio de usuarios para marcar como vista la película con id movieId para el usuario user._id
+    const res = await UserService.check(user, movieId, newStatus);
+    console.log(res);
+
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteMovie = async (movieId) => {
+    console.log(`intentar eliminar movie ${movieId}`);
+    const res = await UserService.deleteMovie(user, movieId);
+    console.log(res);
+    setIsModalOpen(false);
+  }
 
   return (
     <div className="profile">
@@ -76,6 +89,13 @@ export default function UserProfile() {
             className="rentedMovie"
             key={movie._id}
           >
+            <div>
+              {movie.viewed == true ? (
+                <span className="movieViewed">Viewed</span>
+              ) : (
+                <span className="moviePending">Not Viewed</span>
+              )}
+            </div>
             {movie.title}
           </div>
         ))}
@@ -93,8 +113,19 @@ export default function UserProfile() {
             width={200}
           />
           <div className="manageButtons">
-            <button>Check as viewed</button>
-            <button>Delete from watchlist</button>
+            <button
+              onClick={() => handleCheckViewed(movieToView._id, true)}
+              className="checkViewed"
+            >
+              Check as viewed
+            </button>
+            <button
+              onClick={() => handleCheckViewed(movieToView._id, false)}
+              className="checkAsPending"
+            >
+              Check as pending
+            </button>
+            <button onClick={()=>handleDeleteMovie(movieToView._id)} className="deleteFromWatchlist">Delete from my Watchlist</button>
           </div>
         </ModalContainer>
       )}
