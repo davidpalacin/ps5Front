@@ -58,4 +58,15 @@ UserService.deleteMovie = async (user, movieId) => {
   }
 }
 
+UserService.deleteUser = async (user) => {
+  try {
+    const apiURL = `${enviroment.BASE_URL}/users/delete/${user._id}`;
+    const res = await axios.delete(apiURL);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default UserService;

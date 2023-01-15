@@ -27,15 +27,27 @@ export default function AdminPanel() {
     }
   };
 
-  return (
-    <div className="admin-panel">
-      <h3>Admin page</h3>
+  const handleDelete = async(userToDelete) => {
+    const res = await UserService.deleteUser(userToDelete);
+    console.log(res);
+    await getAllUsers(token);
+  }
 
-      <div>
-        {users.map((user) => (
-          <div key={user._id}>{user.name}</div>
-        ))}
+  return (
+    <>
+      <div className='admin'>
+        <h3 className="titleAdmin">Hi Admin</h3>
+        <div className="admin-panel">
+          {users.map((user) => (
+            <div className='userCard' key={user._id}>
+              <strong>{user.name}</strong>
+              <div className="admin-buttons">
+                <button onClick={()=>{handleDelete(user)}} className='delete-user'>DELETE</button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
