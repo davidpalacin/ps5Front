@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { enviroment } from "../../_enviroments/enviroment";
 import UserService from "../../_services/UserService";
 import "./MovieCard.scss";
 import styled from "styled-components";
+import { updateMovies } from "../../features/login/authSlice";
 
 const ModalContainer = styled.div`
   top: 50%;
@@ -26,6 +27,7 @@ const ModalContainer = styled.div`
 `;
 
 export default function MovieCard({ movie }) {
+  const dispatch = useDispatch();
   const userLogged = useSelector((state) => state.auth.user);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,7 +65,7 @@ export default function MovieCard({ movie }) {
           <strong>Do you want to rent {movie.title}?</strong>
           <div className="movie-info">
             <img
-             className="modal-image"
+              className="modal-image"
               src={`${enviroment.IMAGE_URL}${movie.poster_path}`}
               alt="poster path"
               width={200}

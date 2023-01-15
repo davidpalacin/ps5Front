@@ -6,7 +6,6 @@ import TokenStorageService from "../../_services/TokenStorageService";
 import { MovieService } from "../../_services/MovieService";
 import MovieCard from "../MovieCard/MovieCard";
 
-
 export function MovieList() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
