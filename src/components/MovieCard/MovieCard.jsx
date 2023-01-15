@@ -34,10 +34,14 @@ export default function MovieCard({ movie }) {
     setIsModalOpen(true);
   };
 
-  const handleRentMovie = () => {
+  const handleRentMovie = async () => {
     if(isLoggedIn) {
-      const resultAddMovie = UserService.rentMovie(userLogged, movie);
-      console.log(resultAddMovie);
+      try {
+        const res = await UserService.rentMovie(userLogged, movie);
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       alert("Necesitas iniciar sesión para usar esto.")
     }
