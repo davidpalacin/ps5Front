@@ -21,6 +21,10 @@ const handleLogout = () => {
   navigate('/login');
 };
 
+const goToAdmin = () => {
+  navigate("/administratorPanel");
+}
+
 const handleEnterProfile = () => {
   navigate("/userProfile");
 }
@@ -30,11 +34,6 @@ const handleShowNavbar = () => {
     return (
       <>
         <li className="nav-item">
-          <span onClick={handleLogout} className="nav-link navbar-logout">
-            Logout
-          </span>
-        </li>
-        <li className="nav-item">
           <span
             onClick={handleEnterProfile}
             className="nav-link navbar-username"
@@ -42,6 +41,20 @@ const handleShowNavbar = () => {
             {user.name}
           </span>
         </li>
+        <li className="nav-item">
+          <span onClick={handleLogout} className="nav-link navbar-logout">
+            Logout
+          </span>
+        </li>
+        {user.role == "admin" ? (
+          <li className="nav-item">
+            <span onClick={goToAdmin} className="nav-link navbar-username">
+              Administrator page
+            </span>
+          </li>
+        ) : (
+          ""
+        )}
       </>
     );
   } else {
