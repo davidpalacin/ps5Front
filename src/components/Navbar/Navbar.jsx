@@ -76,10 +76,10 @@ const handleShowNavbar = () => {
 }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-nav">
+    <nav className="navbar myNav navbar-expand-lg navbar-dark bg-nav">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <img src={logo} alt="logo" />
+          RENTFLIX
         </a>
         <button
           className="navbar-toggler"

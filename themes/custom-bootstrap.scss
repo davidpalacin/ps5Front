@@ -9,7 +9,7 @@ $theme-colors: (
     "success": #109b58,
     "warning": #e0c812,
     "danger": #ee1407,
-    "nav": #025959
+    "nav": rgb(202, 0, 0),
 );
 
 @import "bootstrap/scss/bootstrap.scss";
