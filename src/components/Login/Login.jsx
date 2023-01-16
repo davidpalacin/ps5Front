@@ -12,8 +12,6 @@ export default function Login() {
 
   const logged = useSelector((state) => state.auth.isLoggedIn);
 
-  console.log(`Loggeado es ${logged}`);
-
   const [message, setMessage] = useState("");
 
   const [formValues, setFormValues] = useState({

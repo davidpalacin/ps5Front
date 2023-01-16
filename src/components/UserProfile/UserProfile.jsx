@@ -78,7 +78,7 @@ export default function UserProfile() {
   return (
     <div className="profile">
       <h3>
-        <strong>{user.name.toUpperCase()}'s Watchlist list</strong>
+        <strong>{user.name.toUpperCase()}'s Watchlist</strong>
       </h3>
       <div className="renting-list">
         {/* Por cada película dibujar el título de la película */}

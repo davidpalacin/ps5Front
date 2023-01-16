@@ -22,7 +22,7 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 13px;
-  width: 90%;
+  width: 50%;
   height: fit-content;
 `;
 
@@ -64,7 +64,7 @@ export default function MovieCard({ movie }) {
       </div>
 
       {isModalOpen && (
-        <ModalContainer>
+        <ModalContainer className="modal-container">
           <strong>Add {movie.title} to Watchlist?</strong>
           <div className="movie-info">
             <img

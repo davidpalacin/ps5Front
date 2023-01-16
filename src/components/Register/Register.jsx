@@ -2,8 +2,6 @@ import React from 'react';
 import './Register.scss';
 import { useState } from 'react';
 import AuthService from "../../_services/AuthService";
-import { useNavigate } from 'react-router-dom';
-
 export default function Register() {
 
   const [registerValues, setRegisterValues] = useState({
@@ -49,8 +47,6 @@ export default function Register() {
   };
 
   const comparePasswords = (credentials) => {
-    console.log('entro');
-    console.log(`La primera es ${credentials.password} y la segunda ${confPassword}`);
     if (credentials.password == confPassword) {
       register(credentials);
     } else {
@@ -58,10 +54,6 @@ export default function Register() {
       setMessage('Las contraseñas no coinciden');
     }
   }
-
-
-  
-  const navigate = useNavigate();
   
   return (
     <div className="register-form">

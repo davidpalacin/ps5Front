@@ -63,7 +63,7 @@
   border: 3px solid black;
 }
 
-.movie-info-description-buttons button:hover{
+.movie-info-description-buttons button:hover {
   background-color: black;
   color: white;
 }
@@ -72,10 +72,24 @@
   margin: auto 0;
 }
 
-.modal-image{
+.modal-image {
   border-radius: 5px;
 }
 
-.movie-card-image{
+.movie-card-image {
   border-radius: 4px;
+}
+
+@media only screen and (max-width: 900px) {
+
+  /* CSS rules for mobile screens go here */
+  .movie-info {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .movie-info img {
+    width: 100%;
+  }
 }
