@@ -56,6 +56,7 @@ export default function MovieCard({ movie }) {
       <div onClick={handleMovieClick} className="movieCard">
         <div className="movieCardRating">{movie.vote_average}</div>
         <img
+          className="movie-card-image"
           src={`${enviroment.IMAGE_URL}${movie.poster_path}`}
           alt="poster path"
         />
@@ -64,7 +65,7 @@ export default function MovieCard({ movie }) {
 
       {isModalOpen && (
         <ModalContainer>
-          <strong>Do you want to rent {movie.title}?</strong>
+          <strong>Add {movie.title} to Watchlist?</strong>
           <div className="movie-info">
             <img
               className="modal-image"

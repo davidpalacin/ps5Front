@@ -79,7 +79,7 @@ const handleShowNavbar = () => {
     <nav className="navbar myNav navbar-expand-lg navbar-dark bg-nav">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          RENTFLIX
+          WATCHFLIX
         </a>
         <button
           className="navbar-toggler"
